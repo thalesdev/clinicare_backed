@@ -1,0 +1,35 @@
+{
+	"name": "thales/clinicare_backend",
+	"description": "A lightweight to clinicare",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Thales de Oliveira",
+			"email": "thalesoliveira200@gmail.com"
+		}
+	],
+	"require": {
+		"illuminate/database": "^8.32",
+		"vlucas/phpdotenv": "^5.3",
+		"robmorgan/phinx": "^0.12.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"Clinicare\\": "src/"
+		}
+	},
+	"scripts": {
+		"migrate:create": [
+			"php vendor/bin/phinx create -c config-phinx.php"
+		],
+		"migrate": [
+			"php vendor/bin/phinx migrate -c config-phinx.php"
+		],
+		"migrate:init": [
+			"php vendor/bin/phinx init -c config-phinx.php"
+		],
+		"migrate:rollback": [
+			"php vendor/bin/phinx rollback -c config-phinx.php"
+		]
+	}
+}
