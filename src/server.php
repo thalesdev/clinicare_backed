@@ -6,9 +6,14 @@
 
 error_reporting(E_ALL);
 
+require_once "Routes/index.php";
+
+require_once __DIR__ . "/cors.php";
 
 
 use Clinicare\Database\Database;
+use Clinicare\Routes\Router;
+
 // use Clinicare\Models\User;
 // use Clinicare\Models\Address;
 // use Clinicare\Models\Appointment;
@@ -17,9 +22,19 @@ use Clinicare\Database\Database;
 // use Clinicare\Models\ExamType;
 // use Clinicare\Models\Laboratory;
 
+// habilita o cors
+cors();
+
 // instancia nossa base de dados
 Database::boot();
 
+
+
+// echo json_encode($_SERVER);
+
+
+$router = Router::getInstance();
+$router->listen();
 
 // User::create([
 //     "name" => "fodace",
@@ -49,7 +64,7 @@ Database::boot();
 // $appointment->save();
 // first form
 
-echo $lab;
+// echo $lab;
 
 
 
