@@ -23,8 +23,10 @@ class ExamsController extends Controller
         ];
         $order = $_GET['order'] ?? 0;
 
-        if ($user->type === 2 || $user->type === 1) {
+        if ($user->type === 2) {
             $payload =  $user->exams()->with($with);
+        } else if ($user->type === 1) {
+            $payload =  $user->laboratory()->first()->exams()->with($with);
         } else if ($user->type === 5) {
             $payload = Exam::with($with);
         } else {
