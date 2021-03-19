@@ -12,20 +12,21 @@ class SessionController extends Controller
 
     public function store()
     {
-        $user = User::where('email', $this->input['email'])->where('password', md5($this->input['password']))->first();
+        $user = User::where('email', $this->input('email'))->where('password', md5($this->input('password')))->first();
         if ($user) {
             $key = $_ENV['JWT_SECRET'];
             $payload = array(
-                'exp' => (new DateTime("now"))->getTimestamp() + (60 * 60 * 12),
+                'exp' => (new DateTime("now"))->getTimestamp() + (60 * 60 * 24 * 5),
                 'id' => $user->id,
                 'emai' => $user->email
             );
             $jwt = JWT::encode($payload, $key);
             return json_encode([
-                "session" => $jwt
+                "token" => $jwt,
+                "user" => $user
             ]);
         }
-        $this->res_status(404);
-        echo json_encode(['error' => 'Senha ou coisa invalida']);
+        $this->res_status(403);
+        echo json_encode(['error' => 'Senha ou Usuario invalidos']);
     }
 }

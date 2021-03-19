@@ -12,7 +12,8 @@
 		"illuminate/database": "^8.32",
 		"vlucas/phpdotenv": "^5.3",
 		"robmorgan/phinx": "^0.12.5",
-		"firebase/php-jwt": "^5.2"
+		"firebase/php-jwt": "^5.2",
+		"nesbot/carbon": "^2.46"
 	},
 	"autoload": {
 		"psr-4": {

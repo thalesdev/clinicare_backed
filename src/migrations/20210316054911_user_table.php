@@ -16,6 +16,7 @@ final class UserTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone');
+            $table->string('specialty')->nullable();
             $table->string('crm')->unique()->nullable();
             $table->integer('type')->default(0);
             $table->integer('gender')->default(0);
@@ -25,6 +26,7 @@ final class UserTable extends Migration
             $table->string('naturalness')->nullable();
             $table->double('salary')->nullable();
             $table->string('cpf')->unique()->nullable();
+            $table->string('rg')->unique()->nullable();
 
 
             $table->foreignId('occupation_area_id')->nullable();

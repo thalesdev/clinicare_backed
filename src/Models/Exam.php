@@ -21,4 +21,10 @@ class Exam extends Model
     {
         return $this->belongsTo('Clinicare\Models\User', 'user_id');
     }
+
+
+    public function exam_type()
+    {
+        return $this->belongsTo('Clinicare\Models\ExamType');
+    }
 }

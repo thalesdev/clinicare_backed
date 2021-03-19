@@ -30,6 +30,15 @@ class Controller
         }
     }
 
+    protected function inputsWithKeys($keys)
+    {
+        $rawData = [];
+        foreach ($keys as $key) {
+            $rawData[$key] = $this->input($key);
+        }
+        return $rawData;
+    }
+
 
     protected function arg($name)
     {
@@ -47,9 +56,14 @@ class Controller
         }
     }
 
-    protected function abort($code = 0)
+    protected function abort($code = 0, $message = null)
     {
         $this->res_status($code);
+        if ($message) {
+            echo json_encode([
+                "message" => $message
+            ]);
+        }
         die;
     }
 }

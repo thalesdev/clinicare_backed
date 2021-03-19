@@ -12,7 +12,7 @@ class User extends Model
         'email',
         'password',
         'phone',
-        'password',
+        'specialty',
         'type',
         'birth',
         'crm',
@@ -22,7 +22,8 @@ class User extends Model
         'nationality',
         'naturalness',
         'salary',
-        'cpf'
+        'cpf',
+        'rg'
     ];
     protected $hidden = [
         'password'

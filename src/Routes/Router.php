@@ -18,7 +18,7 @@ class Router
         $route = str_replace('/', '\/', $url);
         $route = preg_replace_callback('/(\:\w+)/mi', function ($matchs) {
             $value = str_replace(':', '', $matchs[0]);
-            return "(?P<$value>\d+)"; // d+ por enquanto so usaremos query parameters para id's
+            return "(?P<$value>\d+)";
         }, $route);
         $args = explode('@', $controller);
         assert(sizeof($args) > 1, "Você deve informar um Controlador e Um metodo válido");
@@ -53,13 +53,14 @@ class Router
 
     public function listen()
     {
+        header('Content-Type: application/json');
+
         $request_uri = trim($_SERVER["REQUEST_URI"]);
         $request_method = trim($_SERVER["REQUEST_METHOD"]);
         foreach ($this->_routes as $options) {
             $route = $options["route"];
             if ($options['method'] !== $request_method) continue;
             if (preg_match("/^" . $route . "$/i", explode("?", $request_uri)[0], $args)) {
-                header('Content-Type: application/json');
                 if ($options['authenticated']) {
                     Auth::middleware();
                 }

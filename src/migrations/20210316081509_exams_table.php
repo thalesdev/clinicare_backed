@@ -14,6 +14,7 @@ final class ExamsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('laboratory_id')->constrained();
+            $table->foreignId('exam_type_id')->constrained();
             $table->date('schedule')->default('now()');
             $table->string('result')->nullable();
             $table->timestamps();

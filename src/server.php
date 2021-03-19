@@ -12,6 +12,7 @@ require_once __DIR__ . "/cors.php";
 
 
 use Clinicare\Database\Database;
+use Clinicare\Models\User;
 use Clinicare\Routes\Router;
 
 // use Clinicare\Models\User;
@@ -19,7 +20,7 @@ use Clinicare\Routes\Router;
 // use Clinicare\Models\Appointment;
 // use Clinicare\Models\Exam;
 // use Clinicare\Models\OccupationArea;
-// use Clinicare\Models\ExamType;
+use Clinicare\Models\ExamType;
 // use Clinicare\Models\Laboratory;
 
 // habilita o cors
@@ -36,13 +37,7 @@ Database::boot();
 $router = Router::getInstance();
 $router->listen();
 
-// User::create([
-//     "name" => "fodace",
-//     "email" => "fodace@live1.com",
-//     "password" => "fodace@2",
-//     "phone" => "fodac",
-//     "type" => 2
-// ]);
+
 
 // User::create([
 //     "name" => "fodace",
